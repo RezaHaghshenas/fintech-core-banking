@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مستندات معماری و دیکشنری داده پایگاه داده | NeoCore Bank</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #0b0f19;
+            --bg-card: #111827;
+            --bg-card-hover: #1f2937;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: #374151;
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.15);
+            --accent-green: #10b981;
+            --accent-amber: #f59e0b;
+            --accent-purple: #8b5cf6;
+            --accent-rose: #f43f5e;
+            --code-bg: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.8;
+            padding: 0;
+        }
+
+        /* Top Header */
+        header {
+            background: linear-gradient(180deg, rgba(30, 41, 59, 0.8) 0%, rgba(11, 15, 25, 0.95) 100%);
+            border-bottom: 1px solid var(--border-color);
+            padding: 40px 24px;
+            text-align: center;
+            position: relative;
+            backdrop-filter: blur(12px);
+        }
+
+        .badge-brand {
+            display: inline-block;
+            background: var(--primary-glow);
+            color: var(--primary);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 4px 14px;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 32px 24px 80px 24px;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 32px;
+        }
+
+        /* Sticky Navigation Sidebar */
+        aside {
+            position: sticky;
+            top: 24px;
+            height: fit-content;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+        }
+
+        aside h3 {
+            font-size: 1rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        aside ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        aside a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.92rem;
+            padding: 8px 12px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+        }
+
+        aside a:hover {
+            background: var(--primary-glow);
+            color: var(--primary);
+            transform: translateX(-4px);
+        }
+
+        aside .count-pill {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Main Content */
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .section-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            background: var(--primary-glow);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        h2 {
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .schema-tag {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--code-bg);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Explanations & Notes */
+        .info-box {
+            background: rgba(59, 130, 246, 0.08);
+            border-right: 4px solid var(--primary);
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+
+        .gold-box {
+            background: rgba(245, 158, 11, 0.08);
+            border-right: 4px solid var(--accent-amber);
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            color: #fde68a;
+            font-size: 0.95rem;
+        }
+
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            margin-bottom: 28px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+            text-align: right;
+        }
+
+        thead {
+            background: #1e293b;
+        }
+
+        th {
+            padding: 14px 16px;
+            color: #94a3b8;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(55, 65, 81, 0.5);
+            color: #e2e8f0;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Badges */
+        .type-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            background: #0f172a;
+            color: #38bdf8;
+            padding: 2px 7px;
+            border-radius: 5px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            display: inline-block;
+        }
+
+        .key-badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-left: 6px;
+        }
+
+        .key-pk {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .key-fk {
+            background: rgba(139, 92, 246, 0.2);
+            color: #c084fc;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .key-idx {
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .code-snippet {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--code-bg);
+            color: #e2e8f0;
+            padding: 16px;
+            border-radius: 10px;
+            font-size: 0.88rem;
+            direction: ltr;
+            text-align: left;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            margin: 14px 0;
+        }
+
+        /* Grid for cards */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 16px 0;
+        }
+
+        .card-mini {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        .card-mini h4 {
+            color: #fff;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .card-mini p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        @media (max-width: 992px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            aside {
+                position: relative;
+                top: 0;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <span class="badge-brand">🏛️ معماری کلان بانکداری و فین‌تک توزیع‌شده</span>
+        <h1>NeoCore Bank - مستندات جامع پایگاه داده</h1>
+        <p class="subtitle">طراحی پایگاه داده کربنک بر پایه الگوی Database-per-Service، دفترکل حسابداری دوطرفه (Double-Entry)، پارتیشن‌بندی مقیاس میلیاردی و تله‌متری کشف تقلب با یادگیری ماشین.</p>
+    </header>
+
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside>
+            <h3>فهرست بخش‌ها</h3>
+            <ul>
+                <li><a href="#infra"><span>⚙️ ۱. زیرساخت و اکستنشن‌ها</span> <span class="count-pill">۲ افزونه</span></a></li>
+                <li><a href="#customer"><span>👤 ۲. سرویس مشتری و هویت</span> <span class="count-pill">۴ جدول</span></a></li>
+                <li><a href="#ledger"><span>⚖️ ۳. دفترکل مالی و حساب‌ها</span> <span class="count-pill">۶ جدول</span></a></li>
+                <li><a href="#card"><span>💳 ۴. مدیریت کارت (CMS)</span> <span class="count-pill">۳ جدول</span></a></li>
+                <li><a href="#payment"><span>⚡ ۵. سوییچ تراکنش و تقلب</span> <span class="count-pill">۲ جدول</span></a></li>
+                <li><a href="#merchant"><span>🏬 ۶. پذیرندگان و پایانه‌ها</span> <span class="count-pill">۲ جدول</span></a></li>
+                <li><a href="#patterns"><span>🧩 الگوهای پیشرفته مهندسی</span> <span class="count-pill">۴ الگو</span></a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Body Content -->
+        <main>
+
+            <!-- 1. Infrastructure & Extensions -->
+            <section id="infra" class="section-card">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-icon">⚙️</div>
+                        <h2>۱. زیرساخت و اکستنشن‌های پایه (01_init_extensions.sql)</h2>
+                    </div>
+                    <span class="schema-tag">public & extensions</span>
+                </div>
+
+                <div class="info-box">
+                    <strong>چرایی استفاده از افزونه‌ها:</strong> هسته اصلی PostgreSQL سبک نگه داشته شده است. قابلیت‌های کلیدی امنیت و تولید شناسه‌های جهانی از طریق Extension اضافه می‌شوند.
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>نام اکستنشن</th>
+                                <th>نوع</th>
+                                <th>توابع کلیدی</th>
+                                <th>علت انتخاب و کاربرد در بنکینگ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>uuid-ossp</strong></td>
+                                <td><span class="type-badge">Extension</span></td>
+                                <td><code>uuid_generate_v4()</code></td>
+                                <td>تولید استاندارد شناسه‌های یکتای تصادفی برای سیستم‌های توزیع‌شده.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>pgcrypto</strong></td>
+                                <td><span class="type-badge">Extension</span></td>
+                                <td><code>gen_random_uuid()</code>, <code>digest()</code></td>
+                                <td>تولید با عملکرد فوق‌العاده سریع UUID در حافظه، و توابع هشینگ رمزنگاری SHA-256 برای ماسک و هش کارت‌ها.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 style="color:#fff; margin-bottom: 12px;">ترتیب و مکانیزم اجرای اسکریپت‌ها در Docker:</h3>
+                <p style="color: var(--text-muted); margin-bottom: 12px;">داکر فایل‌های داخل پوشه <code>/docker-entrypoint-initdb.d/</code> را به ترتیب الفبا و عددی اجرا می‌کند:</p>
+                <div class="code-snippet">
+01_init_extensions.sql   --> ساخت اکستنشن‌ها و ۵ شِمای ایزوله
+02_customer_service.sql   --> جداول هویت، آدرس و احراز هویت
+03_ledger_service.sql     --> جدول سرفصل‌ها، حساب‌ها و خطوط پارتیشن‌بندی شده سند
+04_card_service.sql       --> مدیریت کارت و سقف‌های داینامیک
+05_payment_service.sql    --> تراکنش‌ها و متادیتای تشخیص تقلب
+06_merchant_service.sql   --> پذیرندگان، دستگاه‌های پوز و درگاه‌ها
+                </div>
+                <div class="gold-box">
+                    ⚠️ <strong>نکته مهم:</strong> این فرآیند خودکار <strong>فقط در بار اول</strong> که دیتابیس نو است اجرا می‌شود. با ریستارت یا بالا آمدن مجدد، اطلاعات از ولوم محافظت‌شده خوانده می‌شود.
+                </div>
+            </section>
+
+            <!-- 2. Customer Service -->
+            <section id="customer" class="section-card">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-icon">👤</div>
+                        <h2>۲. سرویس مشتریان و احراز هویت (Customer & KYC Service)</h2>
+                    </div>
+                    <span class="schema-tag">customer_svc</span>
+                </div>
+
+                <div class="info-box">
+                    <strong>هدف بیزینسی:</strong> مدیریت هویت یکتای مشتریان، سطوح احراز (KYC Tier 1 تا 3)، آدرس سکونت جغرافیایی برای تطبیق فاصله در تراکنش‌ها، و امتیاز ریسک ضد پولشویی (AML).
+                </div>
+
+                <h3 style="color: #fff; margin: 18px 0 10px 0;">جدول: <code>customer_svc.customers</code></h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>نام ستون</th>
+                                <th>نوع داده</th>
+                                <th>کلیدها / شروط</th>
+                                <th>شرح عملکرد و منطق بیزینس</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>id</code></td>
+                                <td><span class="type-badge">UUID</span></td>
+                                <td><span class="key-badge key-pk">PK</span></td>
+                                <td>شناسه یکتای مشتری در کل سیستم‌های توزیع‌شده بانکی.</td>
+                            </tr>
+                            <tr>
+                                <td><code>national_id</code></td>
+                                <td><span class="type-badge">VARCHAR(10)</span></td>
+                                <td><span class="key-badge key-idx">UNIQUE</span></td>
+                                <td>کد ملی ۱۰ رقمی یکتای احراز هویت در ایران.</td>
+                            </tr>
+                            <tr>
+                                <td><code>phone_number</code></td>
+                                <td><span class="type-badge">VARCHAR(15)</span></td>
+                                <td><span class="key-badge key-idx">UNIQUE</span></td>
+                                <td>شماره موبایل ثبت‌شده در سامانه شاهکار برای ارسال رمز پویا و لاگین.</td>
+                            </tr>
+                            <tr>
+                                <td><code>kyc_tier</code></td>
+                                <td><span class="type-badge">INT</span></td>
+                                <td>CHECK (1, 2, 3)</td>
+                                <td>سطح احراز هویت: ۱ (پایه)، ۲ (تایید کارت ملی)، ۳ (احراز ویدیویی سلفی VIP).</td>
+                            </tr>
+                            <tr>
+                                <td><code>status</code></td>
+                                <td><span class="type-badge">VARCHAR(20)</span></td>
+                                <td>DEFAULT 'ACTIVE'</td>
+                                <td>وضعیت حساب کاربری: PENDING, ACTIVE, SUSPENDED, BLOCKED.</td>
+                            </tr>
+                            <tr>
+                                <td><code>risk_score</code></td>
+                                <td><span class="type-badge">NUMERIC(5,2)</span></td>
+                                <td>DEFAULT 0.00</td>
+                                <td>امتیاز ریسک اعتباری و امنیتی مشتری از ۰ تا ۱۰۰ (جهت ارزیابی تقلب و وام).</td>
+                            </tr>
+                            <tr>
+                                <td><code>version</code></td>
+                                <td><span class="type-badge">INT</span></td>
+                                <td>DEFAULT 1</td>
+                                <td>قفل خوش‌بینانه (Optimistic Locking) برای پیشگیری از بازنویسی همزمان اطلاعات.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 style="color: #fff; margin: 18px 0 10px 0;">جدول: <code>customer_svc.customer_addresses</code></h3>
+                <p style="color: var(--text-muted); margin-bottom: 12px;">مختصات <code>latitude</code> و <code>longitude</code> در این جدول ذخیره می‌شوند تا در هنگام کشف تقلب، فاصله مکانی دستگاه پوز یا کاربر با آدرس منزلش سنجیده شود.</p>
+
+                <h3 style="color: #fff; margin: 18px 0 10px 0;">جدول: <code>customer_svc.outbox_events</code></h3>
+                <p style="color: var(--text-muted); margin-bottom: 12px;">جدول پیام‌های بیرونی (Transactional Outbox). با ایندکس شرطی <code>idx_customer_outbox_unprocessed</code> که فقط رکوردهای ارسال‌نشده به Kafka را ایندکس می‌کند.</p>
+            </section>
+
+            <!-- 3. Ledger Service -->
+            <section id="ledger" class="section-card">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-icon">⚖️</div>
+                        <h2>۳. هسته کربنک و دفترکل دوطرفه (Double-Entry Ledger)</h2>
+                    </div>
+                    <span class="schema-tag">ledger_svc</span>
+                </div>
+
+                <div class="gold-box">
+                    <strong>قانون طلایی سیستم مالی:</strong> در یک بانک واقعی هیچ‌گاه عددی در ستون موجودی به تنهایی Update نمی‌شود! هر حرکت مالی، سندی است متشکل از خطوط بدهکار (Debit) و بستانکار (Credit) که باید جمع آن‌ها صفر شود: <code>SUM(Debits) == SUM(Credits)</code>.
+                </div>
+
+                <div class="grid-2">
+                    <div class="card-mini">
+                        <h4>سرفصل‌های حسابداری (Chart of Accounts)</h4>
+                        <p>کدهای استاندارد حسابداری در جدول <code>chart_of_accounts</code>:</p>
+                        <ul style="padding-right: 18px; margin-top: 8px; font-size: 0.85rem; color: #cbd5e1;">
+                            <li><code>1000</code>: دارایی‌ها (ذخایر نقد و بانک مرکزی)</li>
+                            <li><code>2000</code>: بدهی‌ها (سپرده‌های دیداری و قرض‌الحسنه مشتریان)</li>
+                            <li><code>4000</code>: درآمدها (کارمزد تراکنش‌ها)</li>
+                        </ul>
+                    </div>
+                    <div class="card-mini">
+                        <h4>پارتیشن‌بندی ماهانه (Monthly Partitioning)</h4>
+                        <p>جدول <code>journal_entry_lines</code> دارای پارتیشن‌های سالانه/ماهانه است (2025, 2026, 2027) تا کوئری‌های مغایرت‌گیری و بازرسی مالی روی میلیاردها رکورد سریع بماند.</p>
+                    </div>
+                </div>
+
+                <h3 style="color: #fff; margin: 18px 0 10px 0;">جدول: <code>ledger_svc.accounts</code> (حساب‌های بانکی)</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>نام ستون</th>
+                                <th>نوع داده</th>
+                                <th>کلید / قید</th>
+                                <th>توضیحات بیزینس</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>id</code></td>
+                                <td><span class="type-badge">UUID</span></td>
+                                <td><span class="key-badge key-pk">PK</span></td>
+                                <td>شناسه حساب در سطح سیستم.</td>
+                            </tr>
+                            <tr>
+                                <td><code>customer_id</code></td>
+                                <td><span class="type-badge">UUID</span></td>
+                                <td>Logical Ref</td>
+                                <td>ارجاع منطقی به شناسه مشتری در سرویس Customer.</td>
+                            </tr>
+                            <tr>
+                                <td><code>iban</code></td>
+                                <td><span class="type-badge">VARCHAR(34)</span></td>
+                                <td><span class="key-badge key-idx">UNIQUE</span></td>
+                                <td>شماره شبا رسمی و بین‌المللی با فرمت IR...</td>
+                            </tr>
+                            <tr>
+                                <td><code>balance</code></td>
+                                <td><span class="type-badge">NUMERIC(18,4)</span></td>
+                                <td>NOT NULL</td>
+                                <td>موجودی دفتری کل (کش شده برای خواندن سریع).</td>
+                            </tr>
+                            <tr>
+                                <td><code>available_balance</code></td>
+                                <td><span class="type-badge">NUMERIC(18,4)</span></td>
+                                <td>NOT NULL</td>
+                                <td>موجودی در دسترس واقعی (موجودی کل منهای مبالغ مسدودی در <code>account_holds</code>).</td>
+                            </tr>
+                            <tr>
+                                <td><code>daily_transfer_limit</code></td>
+                                <td><span class="type-badge">NUMERIC(18,4)</span></td>
+                                <td>DEFAULT 1B</td>
+                                <td>سقف مجاز انتقال وجه روزانه (طبق بخشنامه‌های بانک مرکزی).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 4. Card Service -->
+            <section id="card" class="section-card">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-icon">💳</div>
+                        <h2>۴. سرویس مدیریت کارت‌های بانکی (Card Management - CMS)</h2>
+                    </div>
+                    <span class="schema-tag">card_svc</span>
+                </div>
+
+                <div class="info-box">
+                    <strong>رعایت الزامات امنیتی استانداردهای بین‌المللی (PCI-DSS):</strong> شماره کارت خام (PAN) و رمزهای مشتری هرگز به صورت متن واضح در دیتابیس ذخیره نمی‌شوند.
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>نام ستون</th>
+                                <th>نوع داده</th>
+                                <th>امنیت و رمزنگاری</th>
+                                <th>کاربرد فنی</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>card_number_masked</code></td>
+                                <td><span class="type-badge">VARCHAR(19)</span></td>
+                                <td>ماسک شده: <code>603799******1234</code></td>
+                                <td>نمایش امن روی اپلیکیشن، رسید پوز و پیامک به مشتری.</td>
+                            </tr>
+                            <tr>
+                                <td><code>card_number_hash</code></td>
+                                <td><span class="type-badge">VARCHAR(64)</span></td>
+                                <td>هش رمزنگاری SHA-256</td>
+                                <td>جستجوی آنی شماره کارت هنگام تراکنش سوییچ بدون افشای شماره کارت.</td>
+                            </tr>
+                            <tr>
+                                <td><code>cvv2_hash</code></td>
+                                <td><span class="type-badge">VARCHAR(64)</span></td>
+                                <td>هش یک‌طرفه</td>
+                                <td>احراز اعتبار CVV2 در خریدهای اینترنتی.</td>
+                            </tr>
+                            <tr>
+                                <td><code>failed_pin_attempts</code></td>
+                                <td><span class="type-badge">INT</span></td>
+                                <td>شمارنده خطا</td>
+                                <td>مسدودسازی خودکار کارت بعد از ۳ بار ورود اشتباه رمز (پیشگیری از Brute-Force).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p style="color: var(--text-muted);">همچنین جدول <code>card_limits</code> امکان فعال‌سازی یا غیرفعال‌سازی خرید اینترنتی و تغییر سقف کانال‌های مختلف را به مشتری می‌دهد.</p>
+            </section>
+
+            <!-- 5. Payment & Fraud Telemetry Service -->
+            <section id="payment" class="section-card">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-icon">⚡</div>
+                        <h2>۵. سوییچ تراکنش و داده‌های تله‌متری تقلب (Payment & Fraud)</h2>
+                    </div>
+                    <span class="schema-tag">payment_svc</span>
+                </div>
+
+                <div class="gold-box">
+                    <strong>معدن طلای Data Science و یادگیری ماشین:</strong> جدول <code>payment_telemetry</code> دقیقاً همان جایی است که مهندسی داده با هوش مصنوعی گره می‌خورد. تمام ویژگی‌های رفتاری و سخت‌افزاری کاربر برای کشف الگوهای فیشینگ و سرقت کارت اینجا ذخیره می‌شود.
+                </div>
+
+                <h3 style="color: #fff; margin: 18px 0 10px 0;">جدول: <code>payment_svc.payment_telemetry</code> (ویژگی‌های مدل ML)</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>نام ویژگی (Feature)</th>
+                                <th>نوع داده</th>
+                                <th>نقش در مدل یادگیری ماشین و تشخیص تقلب</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>ip_address</code></td>
+                                <td><span class="type-badge">VARCHAR(45)</span></td>
+                                <td>کشف حملات تجمیعی از IPهای مشکوک، دیتاسنترها یا ربات‌ها.</td>
+                            </tr>
+                            <tr>
+                                <td><code>latitude</code>, <code>longitude</code></td>
+                                <td><span class="type-badge">NUMERIC(10,7)</span></td>
+                                <td>محاسبه فاصله مکانی تا تراکنش قبلی و سنجش سرعت ناممکن (Impossible Velocity).</td>
+                            </tr>
+                            <tr>
+                                <td><code>device_id</code></td>
+                                <td><span class="type-badge">VARCHAR(100)</span></td>
+                                <td>اثر انگشت سخت‌افزار (Device Fingerprint) برای کشف گوشی‌های آلوده یا شبیه‌سازها.</td>
+                            </tr>
+                            <tr>
+                                <td><code>is_vpn_detected</code></td>
+                                <td><span class="type-badge">BOOLEAN</span></td>
+                                <td>آیا کاربر برای پنهان‌سازی هویت از پروکسی/VPN استفاده کرده است؟</td>
+                            </tr>
+                            <tr>
+                                <td><code>is_rooted_or_jailbroken</code></td>
+                                <td><span class="type-badge">BOOLEAN</span></td>
+                                <td>آیا نرم‌افزار روی یک دستگاه دستکاری‌شده و ناامن در حال اجراست؟</td>
+                            </tr>
+                            <tr>
+                                <td><code>fraud_risk_score</code></td>
+                                <td><span class="type-badge">NUMERIC(5,2)</span></td>
+                                <td>خروجی پیش‌بینی مدل یادگیری ماشین (بین ۰.۰۰ تا ۱۰۰.۰۰).</td>
+                            </tr>
+                            <tr>
+                                <td><code>is_flagged_as_fraud</code></td>
+                                <td><span class="type-badge">BOOLEAN</span></td>
+                                <td><strong>متغیر هدف (Target Label):</strong> برچسب نهایی تایید تقلب برای آموزش مدل‌های Supervised.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 6. Merchant Service -->
+            <section id="merchant" class="section-card">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-icon">🏬</div>
+                        <h2>۶. سرویس پذیرندگان و پایانه‌ها (Merchant & Acquiring)</h2>
+                    </div>
+                    <span class="schema-tag">merchant_svc</span>
+                </div>
+
+                <div class="info-box">
+                    مدیریت شبکه پذیرندگان (دیجی‌کالا، اسنپ، رستوران‌ها و فروشگاه‌ها)، کدهای صنف شاپرک (MCC)، ترمینال‌های کارتخوان (POS) و درگاه‌های اینترنتی پرداخت (IPG).
+                </div>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>کد صنف (MCC)</th>
+                                <th>عنوان کسب‌وکار نمونه</th>
+                                <th>حساب تسویه (Settlement IBAN)</th>
+                                <th>سطح ریسک صنف</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>5311</code></td>
+                                <td>Digikala Online Retail</td>
+                                <td>IR120120000000001234567890</td>
+                                <td><span class="type-badge" style="color: #34d399;">LOW</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>4121</code></td>
+                                <td>Snapp Mobility Solutions</td>
+                                <td>IR980120000000009876543210</td>
+                                <td><span class="type-badge" style="color: #34d399;">LOW</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>5812</code></td>
+                                <td>Nayeb Express Tehran</td>
+                                <td>IR550120000000005555555555</td>
+                                <td><span class="type-badge" style="color: #34d399;">LOW</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 7. Advanced Patterns -->
+            <section id="patterns" class="section-card">
+                <div class="section-header">
+                    <div class="section-title">
+                        <div class="section-icon">🧩</div>
+                        <h2>۷. الگوهای کلیدی مهندسی داده در این پروژه</h2>
+                    </div>
+                    <span class="schema-tag">Architectural Patterns</span>
+                </div>
+
+                <div class="grid-2">
+                    <div class="card-mini">
+                        <h4>۱. الگوی Transactional Outbox</h4>
+                        <p>تضمین ثبت ۱۰۰٪ بدون از دست رفتن داده بین دیتابیس تراکنشی و خط لوله استریمینگ Kafka بدون درگیری با باگ‌های شبکه یا خطای Dual-Write.</p>
+                    </div>
+                    <div class="card-mini">
+                        <h4>۲. ایندکس‌های شرطی (Partial Indexes)</h4>
+                        <p>استفاده از <code>WHERE processed_at IS NULL</code> در جدول‌های Outbox باعث می‌شود حجم ایندکس حتی با عبور از مرز صد میلیون پیام، ثابت و در حد کیلوبایت بماند.</p>
+                    </div>
+                    <div class="card-mini">
+                        <h4>۳. تکرارناپذیری (Idempotency Key)</h4>
+                        <p>در جدول <code>payments</code> فیلد <code>idempotency_key</code> به همراه کلیدهای یکتا، از کسر مجدد پول در صورت قطعی اینترنت مشتری یا ارسال چندباره درخواست جلوگیری می‌کند.</p>
+                    </div>
+                    <div class="card-mini">
+                        <h4>۴. ردپای حسابرسی و قفل خوش‌بینانه (OCC)</h4>
+                        <p>تمام جداول اصلی دارای فیلد <code>version</code> و مهرهای زمانی UTC هستند تا قابلیت بازرسی قانونی و پیشگیری از همزمانی‌های مخرب حفظ شود.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+</body>
+</html>
