@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: neocore_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-neocore}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-neocore_secret_pw}
+      POSTGRES_DB: ${POSTGRES_DB:-neocore_bank}
+    ports:
+      - "5433:5432"
+    volumes:
+      - neocore_pgdata:/var/lib/postgresql/data
+      - ./database/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-neocore} -d ${POSTGRES_DB:-neocore_bank}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  neocore_pgdata:
